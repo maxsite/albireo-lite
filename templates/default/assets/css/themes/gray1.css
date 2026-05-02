@@ -1,0 +1,7 @@
+:root {
+    --primary-hue: 210deg;
+    --primary-sat: 7%;
+    
+    --link-color: var(--primary400);
+    --link-hover-color: var(--primary500);
+}

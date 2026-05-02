@@ -1,0 +1,4 @@
+Split.js
+https://split.js.org/
+https://github.com/nathancahill/split/tree/master/packages/splitjs
+https://unpkg.com/split.js@1.6.5/dist/split.min.js

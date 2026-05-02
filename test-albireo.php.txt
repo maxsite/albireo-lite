@@ -1,0 +1,42 @@
+<?php
+/*
+Проверка минимальных требований к Albireo CMS
+Загрузите файл на сервер и наберите  в браузере вашсайт/test-albireo.php
+*/
+
+$phpVersion = PHP_VERSION;
+
+if (version_compare($phpVersion, '8.1.0', '<')) {
+    echo "❌ PHP ниже 8.1.0 — не поддерживается.<br>";
+} elseif (version_compare($phpVersion, '8.3.0', '<')) {
+    echo "⚠️ PHP $phpVersion работает, но рекомендуется обновить хотя бы до 8.3.<br>";
+} else {
+    echo "✅ PHP $phpVersion<br>";
+}
+
+echo class_exists('Phar') ? "✅ Phar доступен<br>" : "❌ Phar недоступен<br>";
+echo extension_loaded('gd') ? "✅ Модуль <b>gd</b> доступен<br>" : "❌ Модуль <b>gd</b> не доступен.<br>";
+echo extension_loaded('mbstring') ? "✅ Модуль <b>mbstring</b> доступен<br>" : "❌ Модуль <b>mbstring</b> не доступен.<br>";
+echo extension_loaded('openssl') ? "✅ Модуль <b>openssl</b> доступен<br>" : "❌ Модуль <b>openssl</b> не доступен.<br>";
+echo extension_loaded('exif') ? "✅ Модуль <b>exif</b> доступен<br>" : "⚠️ Модуль <b>exif</b> не доступен.<br>";
+echo extension_loaded('zip') ? "✅ Модуль <b>zip</b> доступен<br>" : "⚠️ Модуль <b>zip</b> не доступен.<br>";
+echo extension_loaded('pdo_sqlite') ? "✅ Модуль <b>pdo_sqlite</b> доступен<br>" : "❌ Модуль <b>pdo_sqlite</b> не доступен.<br>";
+
+if (in_array('sqlite', PDO::getAvailableDrivers())) {
+    try {
+        $pdo = new PDO('sqlite::memory:');
+        $currentVersion = $pdo->query('SELECT sqlite_version()')->fetchColumn();
+
+        if (!version_compare($currentVersion, '3.38.0', '>=')) {
+            echo "⚠️ Требуется SQLite версии 3.38.0 или выше. Обновите SQLite.<br>";
+        } else {
+            echo "✅ Текущая версия SQLite: $currentVersion<br>";
+        }
+    } catch (PDOException $e) {
+        echo "❌ Ошибка подключения к SQLite: " . $e->getMessage();
+    }
+} else {
+    echo "❌ SQLite не поддерживается на этом сервере.<br>";
+}
+
+# end of file
