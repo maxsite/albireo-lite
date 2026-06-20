@@ -7,7 +7,7 @@
 {@if $max > 1}
 <nav class="mar30-tb w100 flex flex-vcenter flex-wrap-tablet">
     <div class="flex-grow1 w100-tablet t-gray600 mar10-tb">{@lang Go to page}: 
-        <select class="mar10-l form-input"  onchange="if (this.value != 'current') {window.location.href = this.value} ">
+        <select aria-label="Go to page" class="mar10-l form-input"  onchange="if (this.value != 'current') {window.location.href = this.value} ">
         {@foreach $pagLinks as $url => $num}
             <option value="{* $url *}" {@if $url == 'current'}selected class="t-bold"{@endif}>{{ $num }}</option>
         {@endforeach}

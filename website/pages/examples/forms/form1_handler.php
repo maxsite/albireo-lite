@@ -8,7 +8,7 @@ https://www.php.net/manual/ru/function.filter-var.php
 
 if (!isAjax()) exit('Access denied!');
 
-if ($t = sentLast()) {
+if ($t = sentLastCookie()) {
     echo '<div class="mar20-tb">' . lang('You are submitting the form too many times. Please try again in at least') . ' ' . $t . ' ' . plur($t, 'a second', 'seconds@2', 'seconds@5') . '.</div>';
     
     return;
@@ -151,12 +151,8 @@ if (isset($_POST['form'])) {
         echo '</ul>';
     } else {
         // pr($result['data']);
-        sessionOld('form-name', $result['data']['name']);
-        sessionOld('form-email', $result['data']['email']);
-        sessionOld('form-site', $result['data']['site']);
-        
-        // пересоздать токен — будет защитой от повторных отправок — в теории их не должно быть, поэтому повторые запросы по такому же токену могут указывать на попытку взлома
-        sessionUnsetCSRF();
+        cookieOld('form-name', $result['data']['name']);
+        cookieOld('form-email', $result['data']['email']);
         
         // ... делаем с данными что нужно ...
         

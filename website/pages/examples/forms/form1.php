@@ -12,7 +12,7 @@ use.alpine: +
 
 **/
 
-$HANDLER = formHandler(__DIR__ . '/form-demo_handler.php');
+$HANDLER = formHandler(__DIR__ . '/form1_handler.php');
 
 ?>
 
@@ -31,7 +31,7 @@ $HANDLER = formHandler(__DIR__ . '/form-demo_handler.php');
         <div class="">
             <label class="flex flex-vcenter flex-wrap">
                 <div class="w20 w100-tablet">Your name *</div>
-                <input class="w80 w100-tablet form-input" type="text" name="form[name]" value="<?= htmlspecialchars(sessionOld('form-name')) ?>" placeholder="your name..." required>
+                <input class="w80 w100-tablet form-input" type="text" name="form[name]" value="<?= htmlspecialchars(cookieOld('form-name')) ?>" placeholder="your name..." required>
             </label>
         </div>
 
@@ -39,7 +39,7 @@ $HANDLER = formHandler(__DIR__ . '/form-demo_handler.php');
             <label class="flex flex-wrap">
                 <div class="w20 w100-tablet">Your email *</div>
                 <div class="w80 w100-tablet">
-                    <input class="w100 form-input" type="email" name="form[email]" value="<?= htmlspecialchars(sessionOld('form-email')) ?>" placeholder="your email..." required>
+                    <input class="w100 form-input" type="email" name="form[email]" value="<?= htmlspecialchars(cookieOld('form-email')) ?>" placeholder="your email..." required>
                 </div>
             </label>
         </div>
@@ -48,7 +48,7 @@ $HANDLER = formHandler(__DIR__ . '/form-demo_handler.php');
             <label class="flex flex-wrap">
                 <div class="w20 w100-tablet">Your site</div>
                 <div class="w80 w100-tablet">
-                    <input class="w100 form-input" type="url" name="form[site]" value="<?= htmlspecialchars(sessionOld('form-site')) ?>" placeholder="your site...">
+                    <input class="w100 form-input" type="url" name="form[site]" value="" placeholder="your site...">
                 </div>
             </label>
         </div>

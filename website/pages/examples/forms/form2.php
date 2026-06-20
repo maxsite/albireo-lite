@@ -13,7 +13,7 @@ use.alpine: +
 **/
 
 
-$HANDLER = formHandler(__DIR__ . '/form-demo2_handler.php');
+$HANDLER = formHandler(__DIR__ . '/form2_handler.php');
 
 ?>
 
@@ -29,7 +29,7 @@ $HANDLER = formHandler(__DIR__ . '/form-demo2_handler.php');
         <div class="">
             <label class="flex flex-vcenter flex-wrap">
                 <div class="w20 w100-tablet">Your name</div>
-                <input class="w80 w100-tablet form-input" type="text" name="form[name]" value="<?= htmlspecialchars(sessionOld('form-name')) ?>" placeholder="your name...">
+                <input class="w80 w100-tablet form-input" type="text" name="form[name]" value="<?= htmlspecialchars(cookieOld('form-name')) ?>" placeholder="your name...">
             </label>
         </div>
 
@@ -37,7 +37,7 @@ $HANDLER = formHandler(__DIR__ . '/form-demo2_handler.php');
             <label class="flex flex-vcenter flex-wrap">
                 <div class="w20 w100-tablet">Your email</div>
                 <div class="w80 w100-tablet">
-                    <input class="w100 form-input" type="email" name="form[email]" value="<?= htmlspecialchars(sessionOld('form-email')) ?>" placeholder="your email...">
+                    <input class="w100 form-input" type="email" name="form[email]" value="<?= htmlspecialchars(cookieOld('form-email')) ?>" placeholder="your email...">
                 </div>
             </label>
         </div>

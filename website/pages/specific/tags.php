@@ -1,7 +1,6 @@
 <?php if (!defined('BASE_DIR')) exit('No direct script access allowed');
 /**
 # меняем title в зависимости от языка и первого сегмента URL
-# title: <?= CURRENT_URL['segment1'] ? lang('Tag') . ': «' . CURRENT_URL['segment1'] . '»' : lang('Tags') ?>
 title: <?= CURRENT_URL['segment1'] ? lang('Tag') . ': «' . implode("/", array_slice(CURRENT_URL['segments'], 1)) . '»' : lang('Tags') ?>
 description: [title]
 
@@ -21,8 +20,8 @@ pagination-format: [NBSP] - <?= lang('page') ?> %d
 // выносим переменные для настроек
 $limit = 10; // кол-во записей на одной странице пагинации
 
-// $seg = CURRENT_URL['segments'][1] ?? ''; // второй сегмент url tags/Астрономия
-$seg = implode("/", array_slice(CURRENT_URL['segments'], 1)); // смотрим все сегменты кроме первого
+// смотрим все сегменты кроме первого
+$seg = implode("/", array_slice(CURRENT_URL['segments'], 1)); 
 
 if (!$seg) { 
     // нет сегмента получаем все метки, что используются в записях

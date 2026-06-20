@@ -19,9 +19,6 @@ pagination-format: [NBSP] - <?= lang('page') ?> %d
 
 $categories = categoryGetAll();
 
-// pr($categories);
-// pr(CURRENT_URL['segments']);
-
 if (!$categories) {
     // если нет рубрик на сайте, то просто выходим
     header('HTTP/1.0 404 Not Found');
@@ -29,8 +26,8 @@ if (!$categories) {
     return;
 }
 
-// $seg = CURRENT_URL['segments'][1] ?? ''; // второй сегмент url category/astronomy
-$seg = implode("/", array_slice(CURRENT_URL['segments'], 1)); // смотрим все сегменты кроме первого
+// смотрим все сегменты кроме первого
+$seg = implode("/", array_slice(CURRENT_URL['segments'], 1)); 
 
 $catConfig = getConfigFile(CONFIG_DIR . 'category.php');
 
@@ -51,8 +48,6 @@ if (!$seg) {
             $categories[$catSlug]['pages'] = [];
     }
     
-    // pr($categories);
-
     echo tpl(data: $categories, tpl: TPL_DIR . 'category.php');
 
     if (isset($catConfig['*']['text-end']))
@@ -63,8 +58,6 @@ if (!$seg) {
         // есть рубрика, нужно получить её записи
         $limit = $categories[$seg]['limit'] ?? 10;
         $rows = categoryGetPages($seg, $limit);
-        
-        // pr($rows);
 
         if (!$rows['files']) {
             header('HTTP/1.0 404 Not Found');

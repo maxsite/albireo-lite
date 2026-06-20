@@ -33,13 +33,6 @@ if ($category) {
             $result .= LF . '## Рубрика: ' . $cat . LF . LF;
         }
 
-        // $pages = getPages(
-        //         limit: 1000,
-        //         where: 'draft = 0 AND type != "system" AND category LIKE :category',
-        //         order: 'date_unix DESC',
-        //         bindValue: [':category' => '%#' . $cat . '#%'],
-        // );
-        
         $pages = categoryGetPages($cat, 1000);
 
         if ($pages['files']) {
@@ -67,7 +60,7 @@ if ($category) {
         $result .= LF;
     }
 } else {
-    $pages = getPages(limit: 1000, where: 'draft = 0 AND type != "system"');
+    $pages = getPages(limit: 1000, where: "draft = 0 AND type != 'system'");
 
     foreach ($pages['files'] as $file => $page) {
         if ($page['slug'] == '404') continue;

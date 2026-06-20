@@ -21,8 +21,9 @@ foreach($pages['files'] as $file => $info) {
 
     $slug = $info['slug'];
 
-    if ($slug == '404') continue; // исключить 404
-    if ($slug == '/') continue; // главная
+    if ($slug == '404') continue;
+    if ($slug == '/') continue;
+    
     if (isset($info['method']) and strtoupper($info['method']) !== 'GET') continue;
 
     // пропускаем те, где явно отмечено sitemap: 0
@@ -30,7 +31,9 @@ foreach($pages['files'] as $file => $info) {
 
     if (isset($info['date'])) {
         $date = ' <span class="t90 t-primary400">➝ ' . convertDate($info['date'], 'd-m-Y') . '</span>';
-        $curM = convertDate($info['date'], 'm/Y'); // год и месяц для группировки по месяцам
+        
+        // год и месяц для группировки по месяцам
+        $curM = convertDate($info['date'], 'm/Y'); 
     } else {
         $date = '';
     }

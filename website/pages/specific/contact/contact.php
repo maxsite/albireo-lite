@@ -21,7 +21,7 @@ use.alpine: +
 
 **/
 
-if ($t = sentLast()) {
+if ($t = sentLastCookie()) {
     echo '<div class="mar20-tb">' . lang('You are submitting the form too many times. Please try again in at least') . ' ' . $t . ' ' . plur($t, 'a second', 'seconds@2', 'seconds@5') . '.</div>';
     
     return;
@@ -59,7 +59,7 @@ if ($contactDescription === false)
         <div class="">
             <label class="flex flex-vcenter flex-wrap">
                 <div class="w20 w100-tablet"><?= lang('Your name') ?> *</div>
-                <input class="w80 w100-tablet form-input" type="text" name="form[name]" value="<?= htmlspecialchars(sessionOld('form-name')) ?>" placeholder="<?= lang('your name') ?>..." required>
+                <input class="w80 w100-tablet form-input" type="text" name="form[name]" value="<?= htmlspecialchars(cookieOld('form-name')) ?>" placeholder="<?= lang('your name') ?>..." required>
             </label>
         </div>
 
@@ -67,7 +67,7 @@ if ($contactDescription === false)
             <label class="flex flex-vcenter flex-wrap">
                 <div class="w20 w100-tablet"><?= lang('Your email') ?> *</div>
                 <div class="w80 w100-tablet">
-                    <input class="w100 form-input" type="email" name="form[email]" value="<?= htmlspecialchars(sessionOld('form-email')) ?>" placeholder="<?= lang('your email') ?>..." required>
+                    <input class="w100 form-input" type="email" name="form[email]" value="<?= htmlspecialchars(cookieOld('form-email')) ?>" placeholder="<?= lang('your email') ?>..." required>
                 </div>
             </label>
         </div>

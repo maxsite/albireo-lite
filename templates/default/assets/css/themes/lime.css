@@ -4,4 +4,6 @@
 
     --link-color: var(--primary600);
     --link-hover-color: var(--primary700);
+    
+    --blockquote-color: var(--primary600);
 }

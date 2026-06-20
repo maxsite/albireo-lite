@@ -7,6 +7,7 @@ slug: user
 head-meta[robots]: noindex
 type: system
 parser: -
+
 use.clipboard: +
 
  **/
@@ -20,6 +21,7 @@ if (!getUser('login') or !getUser()) {
 $user = getUser();
 
 // pr($user);
+
 ?>
 
 <div class="w100px h100px b-right t400"><?= htmlspecialchars($user['emoji']) ?></div>
@@ -34,7 +36,13 @@ $user = getUser();
 </ul>
 
 <?php
+
 // если у юзера разрешено работать с API
-if (!empty($user['api_id'])) new \Api\Api()->user($user);
+// new \Api\Api()->user($user); # PHP 8.5 - 8.3
+if (!empty($user['api_id'])) {
+    if (class_exists('\Api\Api')) {
+        (new \Api\Api())->user($user);
+    }
+}
 
 # end of file

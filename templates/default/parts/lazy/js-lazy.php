@@ -7,14 +7,14 @@
 
 // js.lazy[]: my.js
 if ($file = getPageData('js.lazy') and checkStr($file)) {
-    if (file_exists(ASSETS_DIR . 'js' . DIRECTORY_SEPARATOR . $file))
+    if (file_exists(ASSETS_DIR . 'js/' . $file))
        echo '<script src="' . ASSETS_URL . 'js/' . $file . '?' . ALBIREO_VERSION .'"></script>';
 }
 
 // js.lazy: my.js
 if ($files = getKeysPageData('js.lazy', '[val]')) {
     foreach ($files as $file) {
-        if (file_exists(ASSETS_DIR . 'js' . DIRECTORY_SEPARATOR . $file))
+        if (file_exists(ASSETS_DIR . 'js/' . $file))
             echo '<script src="' . ASSETS_URL . 'js/' . $file . '?' . ALBIREO_VERSION . '"></script>';
     }
 }

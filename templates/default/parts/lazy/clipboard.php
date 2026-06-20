@@ -16,6 +16,8 @@ use.clipboard: +
 ```copy-txt
 текст
 ```
+
+📋📜📄
  */
 
 if (checkStr(getPageData('use.clipboard', false)) === true) : 
@@ -29,8 +31,8 @@ const blocks = document.querySelectorAll(".copy-txt");
 blocks.forEach((block, index) => {
 const text = block.textContent;
 const button = document.createElement("button");
-button.className = "copy-btn";
-button.textContent = "📋";
+button.className = "copy-btn button pad0-tb pad5-rl rounded5 bi-copy icon0";
+button.textContent = "";
 button.setAttribute("data-clipboard-text", text);
 button.setAttribute("title", "Copy to Clipboard");
 button.style.position = "absolute";

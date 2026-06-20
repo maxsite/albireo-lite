@@ -58,7 +58,7 @@ $np['next_file'] = $np['next_title'] = $np['next_url'] = $np['next_image'] = '';
 // найти файлы с указанными slug
 $db = getDB('filesinfo', true);
 
-$rows = \Pdo\PdoQuery::fetchAll($db, "SELECT file, title, header, page_url, image_large FROM file_info WHERE slug = :slug AND type = 'blog' AND draft = 0;", [':slug' => $next]);
+$rows = \Pdo\PdoQuery::fetchAll($db, "SELECT file, title, header, page_url, image_large FROM file_info WHERE slug = :slug AND type = :type AND draft = 0;", [':slug' => $next, ':type' => 'blog']);
 
 if ($rows) {
     $np['prev_file'] = $rows[0]['file'];
@@ -67,7 +67,7 @@ if ($rows) {
     $np['prev_image'] = $rows[0]['image_large'];
 }
 
-$rows = \Pdo\PdoQuery::fetchAll($db, "SELECT file, title, header, page_url, image_large FROM file_info WHERE slug = :slug AND type = 'blog' AND draft = 0;", [':slug' => $prev]);
+$rows = \Pdo\PdoQuery::fetchAll($db, "SELECT file, title, header, page_url, image_large FROM file_info WHERE slug = :slug AND type = :type AND draft = 0;", [':slug' => $prev, ':type' => 'blog']);
 
 if ($rows) {
     $np['next_file'] = $rows[0]['file'];

@@ -23,9 +23,9 @@ lang.pl[description]: Warunki użytkowania i prawa autorskie
 
 ?>
 
-<?php if (getPageData('user-lang') == 'uk') : ?>
+<!-- nosimple --><svg viewBox="0 0 800 130" xmlns="http://www.w3.org/2000/svg"> <style> @namespace svg url(http://www.w3.org/2000/svg); svg { font-family: Helvetica, Arial, sans-serif; text-rendering: geometricPrecision; } svg|a:link, svg|a:visited { cursor: pointer; } .flag-blue { fill: #0056b3; } .flag-yellow { fill: #ffd700; } .message { fill: white; font-size: 18px; } .call { fill: black; font-size: 22px; } .arrow { font-size: 14px; } </style> <defs> <clipPath id="round-corners"><rect width="100%" height="100%" rx="3" /></clipPath> </defs> <a href="https://stand-with-ukraine.pp.ua" target="_blank"> <g clip-path="url(#round-corners)"> <rect x="0" y="0" width="100%" height="100%" class="flag-yellow"/> <rect x="0" y="0" width="100%" height="90px" class="flag-blue"/> </g> <text x="0" y="25" class="message"> <tspan x="30" dy="0.8em">Russia invaded Ukraine, killing tens of thousands of civilians and displacing millions more.</tspan> <tspan x="30" dy="1.2em">It's a genocide. Please help us defend freedom, democracy and Ukraine's right to exist.</tspan> </text> <text x="50%" y="86%" dominant-baseline="middle" text-anchor="middle" class="call">Help Ukraine Now <tspan dominant-baseline="middle" class="arrow">➔</tspan> </text> </a> </svg><!-- /nosimple -->
 
-__(t-center mar20-tb) <a href="https://stand-with-ukraine.pp.ua/" rel="nofollow" target="_blank"><img src="<?= UPLOADS_URL ?>stand-with-ukraine.svg" alt="Stand With Ukraine" title="Stand With Ukraine"></a>
+<?php if (getPageData('user-lang') == 'uk') : ?>
 
 __(t-red t-center t-italic mar20-b) Цей сайт не працює з росією та її громадянами.
 
@@ -45,7 +45,7 @@ h1 Умови використання та копірайти
 
 ---
 
-Наш сайт використовує cookies. Для ідентифікації користувачів використовуються PHP-сесії. Це технічна потреба. За потреби ви можете працювати з сайтом у режимі анонімного перегляду браузера.
+Наш сайт використовує cookies. Це технічна потреба. За потреби ви можете працювати з сайтом у режимі анонімного перегляду браузера.
 
 ---
 
@@ -56,7 +56,6 @@ h1 Умови використання та копірайти
 /ul
 
 <?php elseif (getPageData('user-lang') == 'en') : ?>
-__(t-center mar20-tb) <a href="https://stand-with-ukraine.pp.ua/" rel="nofollow" target="_blank"><img src="<?= UPLOADS_URL ?>stand-with-ukraine.svg" alt="Stand With Ukraine" title="Stand With Ukraine"></a>
 
 __(t-red t-center t-italic mar20-b) This site does not work with russia and its citizens.
 
@@ -77,7 +76,7 @@ Subject to **mandatory compliance** with the following conditions:
 
 ---
 
-Our website uses cookies. PHP sessions are used to identify users. This is a technical necessity. If necessary, you can work with the site in anonymous browser browsing mode.
+Our website uses cookies. This is a technical necessity. If necessary, you can work with the site in anonymous browser browsing mode.
 
 ---
 
@@ -87,8 +86,6 @@ Our website uses cookies. PHP sessions are used to identify users. This is a tec
 - &copy; <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a>
 
 <?php elseif (getPageData('user-lang') == 'de') : ?>
-
-__(t-center mar20-tb) <a href="https://stand-with-ukraine.pp.ua/" rel="nofollow" target="_blank"><img src="<?= UPLOADS_URL ?>stand-with-ukraine.svg" alt="Stand With Ukraine" title="Stand With Ukraine"></a>
 
 __(t-red t-center t-italic mar20-b) Diese Website arbeitet nicht mit russland und seinen Bürgern.
 
@@ -109,7 +106,7 @@ Bei **zwingender Einhaltung** folgender Bedingungen:
 
 ---
 
-Unsere Website verwendet Cookies. Zur Identifizierung der Benutzer werden PHP-Sessions eingesetzt. Dies ist eine technische Notwendigkeit. Bei Bedarf können Sie die Website im anonymen Browsermodus nutzen.
+Unsere Website verwendet Cookies. Dies ist eine technische Notwendigkeit. Bei Bedarf können Sie die Website im anonymen Browsermodus nutzen.
 
 ---
 
@@ -119,8 +116,6 @@ Unsere Website verwendet Cookies. Zur Identifizierung der Benutzer werden PHP-Se
 - &copy; <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a>
 
 <?php elseif (getPageData('user-lang') == 'pl') : ?>
-
-__(t-center mar20-tb) <a href="https://stand-with-ukraine.pp.ua/" rel="nofollow" target="_blank"><img src="<?= UPLOADS_URL ?>stand-with-ukraine.svg" alt="Stand With Ukraine" title="Stand With Ukraine"></a>
 
 __(t-red t-center t-italic mar20-b) Ta strona nie współpracuje z rosją i jej obywatelami.
 
@@ -140,7 +135,7 @@ Przy **obowiązkowym przestrzeganiu** następujących warunków:
 
 ---
 
-Nasza strona wykorzystuje cookies. Do identyfikacji użytkowników stosowane są sesje PHP. Jest to konieczność techniczna. W razie potrzeby możesz korzystać ze strony w trybie przeglądania anonimowego w przeglądarce.
+Nasza strona wykorzystuje cookies. Jest to konieczność techniczna. W razie potrzeby możesz korzystać ze strony w trybie przeglądania anonimowego w przeglądarce.
 
 ---
 
@@ -150,8 +145,6 @@ Nasza strona wykorzystuje cookies. Do identyfikacji użytkowników stosowane są
 - &copy; <a href="https://icons.getbootstrap.com/">Bootstrap Icons</a>
 
 <?php else : ?>
-
-__(t-center mar20-tb) <a href="https://stand-with-ukraine.pp.ua/" rel="nofollow" target="_blank"><img src="<?= UPLOADS_URL ?>stand-with-ukraine.svg" alt="Stand With Ukraine" title="Stand With Ukraine"></a>
 
 __(t-red t-center t-italic mar20-b) Этот сайт не работает с россией и её гражданами.
 
@@ -171,7 +164,7 @@ h1 Условия использования и копирайты
 
 ---
 
-Наш сайт использует cookies. Для идентификации пользователей применяются PHP-сессии. Это техническая необходимость. При необходимости вы можете работать с сайтом в режиме анонимного просмотра браузера.
+Наш сайт использует cookies. Это техническая необходимость. При желании вы можете работать с сайтом в режиме анонимного просмотра браузера.
 
 ---
 

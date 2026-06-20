@@ -8,6 +8,8 @@ slug: berry-design
 compress: +
 use.alpine: +
 
+head-meta[robots]: noindex
+
 # layout: default.php
 # headers: headers/header1.php
 

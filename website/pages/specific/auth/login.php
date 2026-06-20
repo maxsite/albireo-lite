@@ -26,11 +26,6 @@ if (getUser()) {
 
 $HANDLER = formHandler(__DIR__ . '/login_handler.php');
 
-// HTTP_REFERER используем в качестве редиректа после логина - все проверки в handler'е
-if (!empty($_SERVER['HTTP_REFERER'])) {
-    sessionFlashSet('loginFormReferer', $_SERVER['HTTP_REFERER']);
-}
-
 ?>
 <div x-data="{...albireoForm()}" class="mar30-tb">
 
@@ -42,7 +37,7 @@ if (!empty($_SERVER['HTTP_REFERER'])) {
         <div>
             <label class="flex flex-vcenter flex-wrap">
                 <div class="w20 w100-tablet"><?= lang('Your login') ?></div>
-                <input class="w80 w100-tablet form-input" type="text" name="form[login]" value="<?= htmlspecialchars(sessionOld('form-login')) ?>" placeholder="<?= htmlspecialchars(lang('your login')) ?>..." required>
+                <input class="w80 w100-tablet form-input" type="text" name="form[login]" value="" placeholder="<?= htmlspecialchars(lang('your login')) ?>..." required>
             </label>
         </div>
 
@@ -50,7 +45,7 @@ if (!empty($_SERVER['HTTP_REFERER'])) {
             <label class="flex flex-vcenter flex-wrap">
                 <div class="w20 w100-tablet"><?= lang('Your password') ?></div>
                 <div class="w80 w100-tablet">
-                    <input class="w100 form-input" type="password" name="form[password]" value="<?= htmlspecialchars(sessionOld('form-password')) ?>" placeholder="<?= htmlspecialchars(lang('your password')) ?>..." required>
+                    <input class="w100 form-input" type="password" name="form[password]" value="" placeholder="<?= htmlspecialchars(lang('your password')) ?>..." required>
                 </div>
             </label>
         </div>

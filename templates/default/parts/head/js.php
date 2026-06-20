@@ -21,7 +21,7 @@
 if ($plugins = getKeysPageData('use.alpine.plugin', '')) {
     foreach ($plugins as $plugin => $on) {
         if (checkStr($on) === true) {
-            $file = RESOURCES_DIR . 'alpine' . DIRECTORY_SEPARATOR . 'plugins' . DIRECTORY_SEPARATOR . $plugin . '.min.js';
+            $file = RESOURCES_DIR . 'alpine/plugins/' . $plugin . '.min.js';
             if (file_exists($file))
                echo '<script src="' . RESOURCES_URL . 'alpine/plugins/' . $plugin . '.min.js?' . ALBIREO_VERSION . '" defer></script>';
         }

@@ -8,6 +8,17 @@
     --container-content-bg: white;
 }
 
+p a {
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+p a:hover {
+    text-decoration-style: underline;
+    text-decoration-thickness: 2px;
+}
+
 .body-bg {
     background-color: var(--body-bg);
 }

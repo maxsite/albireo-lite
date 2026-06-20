@@ -10,8 +10,24 @@ if ($_content_files = findFilesFromDirs('[!_]*.php', TEMPLATE_PARTS_DIR . 'conte
 }
 
 $_allow_read_draft = !(checkStr(getPageData('draft')) and !checkUserAccess(['draft', 'admin']));
+$_main_grid = false;
 
-echo '<article>' . LF;
+if (checkStr(getPageData('main-grid'))) {
+    $_main_grid = [
+        'container_class' => getPageData('main-grid.container.class', 'grid-var gap20 grid-1col-tablet'),
+        'container_style' => getPageData('main-grid.container.style', '--grid-columns: auto minmax(150px, 30%);'),
+        'content_class' => getPageData('main-grid.content.class', ''),
+        'aside_class' => getPageData('main-grid.aside.class', ''),
+        'aside_html' => getPageData('main-grid.aside.html', '', LF, LF),
+        'aside_extras' => getPageData('main-grid.aside.extras', '')
+    ];
+
+    if (!$_main_grid['aside_html'] and !$_main_grid['aside_extras']) $_main_grid = false;
+}
+
+echo '<main>' . LF;
+
+if ($_main_grid) echo '<div class="' . $_main_grid['container_class'] . '" style="' . $_main_grid['container_style'] . '"><div id="page_content" class="' . $_main_grid['content_class'] . '">';
 
 if (checkStr(getPageData('content-separate')) === true) {
     if ($_allow_read_draft)
@@ -25,9 +41,11 @@ if (checkStr(getPageData('content-separate')) === true) {
         echo extras('access-denied.php');
 }
 
-echo LF . '</article>';
+if ($_main_grid) echo '</div><aside class="' . $_main_grid['aside_class'] . '">' . $_main_grid['aside_html'] . extras($_main_grid['aside_extras']) . '</aside></div>';
 
-unset($_allow_read_draft);
+echo LF . '</main>';
+
+unset($_allow_read_draft, $_main_grid);
 
 if ($_content_files = findFilesFromDirs('[!_]*.php', TEMPLATE_PARTS_DIR . 'content', SERVICE_MY_DIR . 'parts/content')) {
     foreach($_content_files as $_file) requireSafe($_file);

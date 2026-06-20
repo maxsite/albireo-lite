@@ -39,7 +39,7 @@ if (empty($delStrFolder)) $delStrFolder = '';
                 {@empty! $_new} <span class="mar10-rl t80 bg-primary100 dark:bg-primary600 dark:t-primary300 pad3-rl rounded5">new</span> {@endempty}
             </div>
             
-            {@empty! $noinfo}
+            {@empty $noinfo}
             <div class="w100-tablet t-right t-left-tablet t-gray300 dark:t-primary700 links-no-color">  {@empty! $category} <span class="bi-bookmark mar10-r">{{ categoryLinks($category) }}</span> {@endempty} {@empty! $tags} <span class="bi-tags mar10-r">{{ tagLinks($tags) }}</span> {@endempty} {@empty! $date} <span class="bi-calendar t-nowrap">{{ convertDate($date, 'Y/m/d') }}</span> {@endempty}</div>
             {@endempty}
         </div>

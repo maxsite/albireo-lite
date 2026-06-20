@@ -23,7 +23,7 @@ if (!$cache) {
     // получаем только текущую группу
     $rows = getPages(
         limit: 0,
-        where: 'draft = 0 AND type = :type and doc_menu_path LIKE :group ESCAPE "/"',
+        where: "draft = 0 AND type = :type and doc_menu_path LIKE :group ESCAPE '/'",
         order: 'file ASC, doc_menu_path ASC',
         bindValue: [':type' => $type, ':group' => $group . '%'],
         sqlResult: true

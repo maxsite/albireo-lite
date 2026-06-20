@@ -2,7 +2,7 @@
 
 if (!isAjax()) exit('Access denied!');
 
-if ($t = sentLast()) {
+if ($t = sentLastCookie()) {
     echo '<div class="mar20-tb">' . lang('You are submitting the form too many times. Please try again in at least') . ' ' . $t . ' ' . plur($t, 'a second', 'seconds@2', 'seconds@5') . '.</div>';
     
     return;

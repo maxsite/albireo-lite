@@ -14,28 +14,27 @@ parser: -
 
 /**
   * для изменения можно использовать параметры страницы:
-  * sitemap-changefreq: monthly
+  * sitemap-changefreq: monthly 
+  * # always hourly daily weekly monthly yearly never
   * sitemap-priority: 0.9
   *
   * исключить страницу из sitemap.xml
   * sitemap: -
   *
 **/
+
 $changefreqDef = 'monthly';
 $priorityDef = '0.5';
 
-// $pagesInfo = getVal('pagesInfo');
-
 // большой лимит, чтобы получить все записи
-$pages = getPages(limit: 20000, where: 'draft = 0 AND type != "system" AND sitemap = 1'); 
-
+$pages = getPages(limit: 20000, where: "draft = 0 AND type != 'system' AND sitemap = 1"); 
 
 $out = '';
 
 // главная страница отдельно
 $out .= '<url>' . "\n";
 $out .= '<loc>' . SITE_URL . '</loc>' . "\n";
-$out .= '<changefreq>daily</changefreq>' . "\n"; // always hourly daily weekly monthly yearly never
+$out .= '<changefreq>daily</changefreq>' . "\n";
 $out .= '<priority>0.9</priority>' . "\n";
 $out .= '</url>' . "\n";
     
@@ -43,18 +42,14 @@ foreach($pages['files'] as $file => $info) {
 
     $slug = $info['slug'];
 
-    if ($slug == '404') continue; // исключить 404
-    if ($slug == '/') continue; // home уже добавлен в начале файла
+    if ($slug == '404') continue;
+    if ($slug == '/') continue;
     if (isset($info['method']) and strtoupper($info['method']) !== 'GET') continue;
-
-    // пропускаем те, где отмечено sitemap: - и type: system
-    // if (checkArrVal($info, 'sitemap', true) !== true) continue;
-    // if (!empty($info['type']) and $info['type'] === 'system') continue;
 
     $changefreq = $info['sitemap-changefreq'] ?? $changefreqDef;
     $priority = $info['sitemap-priority'] ?? $priorityDef;
 
-    if ($slug == '/') $slug = ''; // главная
+    if ($slug == '/') $slug = '';
 
     // у страницы может быть несколько языковых версий
     $hlangs = '';
@@ -94,5 +89,4 @@ echo '</urlset>';
       <xhtml:link rel="alternate" hreflang="de" href="https://www.example.de/deutsch/page.html"/>
    </url>
 </urlset>
-
 */

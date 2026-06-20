@@ -7,7 +7,7 @@ if (!isset($_POST['form'])) {
     return;
 }
 
-if ($t = sentLast()) {
+if ($t = sentLastCookie()) {
     echo '<div class="mar20-tb">' . lang('You are submitting the form too many times. Please try again in at least') . ' ' . $t . ' ' . plur($t, 'a second', 'seconds@2', 'seconds@5') . '.</div>';
     return;
 }
@@ -48,16 +48,11 @@ if ($result['errors']) {
     echo arrayToStrHTML($result['errors'], '<ul error-form class="mar20-tb t-red100 bg-red600 pad20-tb rounded5">', '</ul>', '<li>', '</li>');
 } else {
     $data = $result['data'];
-    
-    // отсюда была отправка — это стандартный CSRF-токен системы
-    // $source = encryptDecrypt('decrypt', $_POST['_token_source']);
-    // $source = TOKEN_SOURCE; // или если это ajax
-    // теоретически он должен быть равен SITE_URL/contact
 
     // pr($data);
     // сохраним в сессии заполненное поле формы form[name] и form[email]
-    sessionOld('form-name', $data['name']);
-    sessionOld('form-email', $data['email']);
+    cookieOld('form-name', $data['name']);
+    cookieOld('form-email', $data['email']);
     
     $message = '';
 
@@ -91,18 +86,16 @@ if ($result['errors']) {
 
     $emailAdmin = getConfig('emailAdmin');
 
-    // pr($emailAdmin, $subject, $headers, $message); // для отладки можно посмотреть что в итоге
-
-    // пересоздать токен — будет защитой от повторных комментариев — в теории их не должно быть, поэтому повторые запросы по такому же токену могут указывать на попытку взлома
-    sessionUnsetCSRF();
+    // для отладки можно посмотреть что в итоге
+    // pr($emailAdmin, $subject, $headers, $message); 
 
     if ($emailAdmin) {
-        sentLast(true); // запомним время отправки формы
+        // запомним время отправки формы
+        sentLastCookie(true); 
         mail64($emailAdmin, $subject, $message, $headers);
         
         echo '<div class="mar20-tb">' . lang('Thank you! Your message has been sent! Message code') .  ': <b>' . $cod . '</b></div>';
     }
 }
-
 
 # end of file

@@ -14,6 +14,7 @@ if (version_compare($phpVersion, '8.1.0', '<')) {
     echo "✅ PHP $phpVersion<br>";
 }
 
+echo (ini_get('default_charset')==='UTF-8') ? "✅ UTF-8 по умолчанию<br>" : "❌ UTF-8 не основная кодировка PHP.<br>";
 echo class_exists('Phar') ? "✅ Phar доступен<br>" : "❌ Phar недоступен<br>";
 echo extension_loaded('gd') ? "✅ Модуль <b>gd</b> доступен<br>" : "❌ Модуль <b>gd</b> не доступен.<br>";
 echo extension_loaded('mbstring') ? "✅ Модуль <b>mbstring</b> доступен<br>" : "❌ Модуль <b>mbstring</b> не доступен.<br>";

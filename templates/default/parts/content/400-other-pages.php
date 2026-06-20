@@ -42,17 +42,17 @@ if (!$files and $categorys) {
     $bind = \Pdo\PdoQuery::buildNamedPlaceholders($categorys, 'cat');
 
     $files = \Pdo\PdoQuery::fetchAll($db,
-       'SELECT title, header AS page_header, page_url, image_large
+       "SELECT title, header AS page_header, page_url, image_large
         FROM file_info
-        WHERE draft = 0 AND type = "blog" AND page_url != :this_page AND json_valid(category)
+        WHERE draft = 0 AND type = :type AND page_url != :this_page AND json_valid(category)
             AND EXISTS (
                 SELECT 1 FROM json_each(category)
-                WHERE value IN (' . $bind['string'] . ') COLLATE NOCASE
+                WHERE value IN (" . $bind['string'] . ") COLLATE NOCASE
             )
         ORDER BY RANDOM()
-        LIMIT :limit;',
+        LIMIT :limit;",
 
-        [':this_page' => $thisPage, ':limit' => $limit] + $bind['binds']
+        [':this_page' => $thisPage, ':type' => 'blog', ':limit' => $limit] + $bind['binds']
     );
 
     // если записей меньше $minimum, то обнуляем массив
@@ -65,17 +65,17 @@ if (!$files and $tags) {
     $bind = \Pdo\PdoQuery::buildNamedPlaceholders($tags, 'tag');
 
     $files = \Pdo\PdoQuery::fetchAll($db,
-       'SELECT title, header AS page_header, page_url, image_large
+        "SELECT title, header AS page_header, page_url, image_large
         FROM file_info
-        WHERE draft = 0 AND type = "blog" AND page_url != :this_page AND json_valid(tags)
+        WHERE draft = 0 AND type = :type AND page_url != :this_page AND json_valid(tags)
             AND EXISTS (
                 SELECT 1 FROM json_each(tags)
-                WHERE value IN (' . $bind['string'] . ') COLLATE NOCASE
+                WHERE value IN (" . $bind['string'] . ") COLLATE NOCASE
             )
         ORDER BY RANDOM()
-        LIMIT :limit;',
+        LIMIT :limit;",
 
-        [':this_page' => $thisPage, ':limit' => $limit] + $bind['binds']
+        [':this_page' => $thisPage, ':type' => 'blog', ':limit' => $limit] + $bind['binds']
     );
 
     // если записей меньше $minimum, то обнуляем массив

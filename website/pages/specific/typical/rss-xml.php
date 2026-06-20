@@ -10,16 +10,16 @@ parser: -
 
 **/
 
-
 //  https://you-site/rss.xml
 //  исключить страницу rss: -
 
-$limit = getConfig('rssLimit', 10); // всего записей в RSS ленте
-
-if ($limit < 1) return; // если ноль, то ничего не выводить
-    
 // https://www.rssboard.org/rss-specification
 // https://www.rssboard.org/files/sample-rss-2.xml
+
+// всего записей в RSS ленте
+$limit = getConfig('rssLimit', 10);
+
+if ($limit < 1) return;
 
 $out = '<rss version="2.0"><channel>' . LF;
 $out .= '<title>' . htmlspecialchars(getConfig('siteTitle')) . '</title>' . LF;
@@ -28,19 +28,16 @@ $out .= '<description>' . htmlspecialchars(getConfig('siteDescription')) . '</de
 $out .= '<copyright>Copyright ' . date('Y') . ', ' . SITE_URL . '</copyright>' . LF;
 $out .= '<generator>Albireo CMS</generator>' . LF;
 
-$pages = getPages(limit: $limit, where: 'draft = 0 AND type != "system" AND rss = 1');
+$pages = getPages(limit: $limit, where: "draft = 0 AND type != 'system' AND rss = 1");
 $files = $pages['files'];
 
-$fieldImage = getConfig('rssAddImage', 'image-large'); // добавлять изображение из указанного поля
+$fieldImage = getConfig('rssAddImage', 'image-large');
 
 foreach ($files as $file => $info) {
 
-    if ($info['slug'] == '404') continue; // исключить 404
-    if ($info['slug'] == '/') continue; // home уже добавлен в начале файла
+    if ($info['slug'] == '404') continue;
+    if ($info['slug'] == '/') continue; 
     if (isset($info['method']) and strtoupper($info['method']) !== 'GET') continue;
-
-    // пропускаем те, где отмечено rss: - и type: system
-    // if (checkArrVal($info, 'rss', true) !== true) continue;
 
     $description = $info['announce'] ?? '';
     $title = $info['title'] ?? '';
@@ -50,13 +47,9 @@ foreach ($files as $file => $info) {
     
     if ($description) $description = '<div>' . $description . '</div>';
     
-    // по хорошему не нужно, поскольку есть <title>
-    // if ($title) $description = '<h1>' . htmlspecialchars($title) . '</h1>' . $description;
-    
     $description = $description . LF . '<p><a href="' . $info['page-url'] . '">' . $title . ' →</a></p>';
     
     if ($fieldImage and !empty($info[$fieldImage])) {
-        // если это не дефолтное изображение
         if ($info[$fieldImage] != UPLOADS_URL . 'default.webp') {
             $description .= '<p><img src="' . $info[$fieldImage] . '" width="400" alt=""></p>';
             $itemImage = $info[$fieldImage];

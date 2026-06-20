@@ -1,16 +1,15 @@
 <?php if (!defined('BASE_DIR')) exit('No direct script access allowed');
 /**
 
-title: Doc 1 sample
-description: Doc 1 sample
+title: Doc 2 sample
+description: Doc 2 sample
 head-meta[robots]: noindex
 
-# doc
-layout: doc1.php
-type: doc
+slug: doc2
 
-headers: 
-footers: 
+# doc
+layout: doc2.php
+type: doc
 
 comments: -
 sitemap: -
@@ -18,24 +17,23 @@ stat: -
 other-pages: -
 compress: +
 parser: textsimple
-css.layout: nofields.css
 
-extras.start[doc-nav.php]: +
-extras.end[doc-nav.php]: +
+# optional
+# css.root[layout-wrap-padding]: 0px
 
 # doc.menu.icon: bi-check
 # doc.menu.add: <span class="b-inline b-right bi-bookmark"></span>
 # doc.menu.add.active: <span class="b-inline b-right bi-bookmark-fill"></span>
 
-doc.config: doc1.php
-doc.menu.title: First doc1
+doc.config: doc2.php
+doc.menu.title: First doc2
 doc.menu.path: 01_General.01
 
 **/
 
 ?>
 
-h1 Doc 1 sample
+h1 Doc 2 sample
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut ullamcorper ante, ut tristique nulla. Duis ultrices dignissim eros in maximus. Curabitur tincidunt orci eu tristique semper. Vivamus mi nisi, lacinia auctor metus in, fermentum mollis libero. Vestibulum viverra urna id diam suscipit, ut vulputate lectus dapibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam posuere faucibus mi, nec vehicula metus lacinia ac. Cras egestas pretium dolor id blandit. Praesent quis commodo quam.
 
