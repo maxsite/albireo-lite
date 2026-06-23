@@ -14,7 +14,7 @@
 {@endempty}
 
 {@empty! $description}
-<div class="mar20-tb t-italic">{* $description *}</div>
+<div class="mar20-tb t-italic">{{ $description }}</div>
 {@endempty}
 
 <div class="flex-wrap {@class ['flex'=>count($DATA)>2, 'b-flex gap30'=>count($DATA)<3]}">

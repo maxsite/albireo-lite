@@ -11,11 +11,11 @@ image-noview: +
 {@empty! $before}{{$before}}{@endempty}
 
 {@empty! $header}
-<div class="h2 mar20-tb">{* $header *}</div>
+<div class="h2 mar20-tb">{{ $header }}</div>
 {@endempty}
 
 {@empty! $description}
-<div class="mar20-tb t-italic">{* $description *}</div>
+<div class="mar20-tb t-italic">{{ $description }}</div>
 {@endempty}
 
 <div class="flex flex-wrap-tablet mar10-b">

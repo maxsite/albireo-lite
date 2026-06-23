@@ -11,7 +11,7 @@ $old_subdirs = '';
 {@endempty}
 
 {@empty! $description}
-<div class="mar20-tb t-italic">{* $description *}</div>
+<div class="mar20-tb t-italic">{{ $description }}</div>
 {@endempty}
 
 <div class="flex flex-wrap">
